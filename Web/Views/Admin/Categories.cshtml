@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Business_Layer__BL_.ViewModels.CategoryViewModel>
+
+
+@{
+    ViewBag.Title = "Caregories";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">
+        @Html.ActionLink("Dashboard", "Dashboard", "Admin")
+    </li>
+    <li class="breadcrumb-item active">Caregories</li>
+</ol>
+<h3 class="mb-5">Caregories</h3>
+
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "CreateCategory", "Admin",null,new { @class = "btn btn-success" })
+    </p>
+    <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.product.Count)
+                </th>
+                <th scope="col">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product.Count)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "UpdateCategory", new { id = item.Id },new { @class = "btn btn-warning" }) |
+                        @Html.ActionLink("Details", "CategoryDetails", new { id = item.Id }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
